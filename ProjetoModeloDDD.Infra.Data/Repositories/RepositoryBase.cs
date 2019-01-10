@@ -1,4 +1,4 @@
-﻿using ProjetoModeloDDD.Domain.Interfaces;
+﻿using ProjetoModeloDDD.Domain.Interfaces.Repositories;
 using ProjetoModeloDDD.Infra.Data.Context;
 using System;
 using System.Collections.Generic;
@@ -10,16 +10,15 @@ namespace ProjetoModeloDDD.Infra.Data.Repositories
     {
         protected ProjetoModeloDDDContext Db = new ProjetoModeloDDDContext();
 
-        public TEntity Add(TEntity entity)
+        public void Add(TEntity entity)
         {
             Db.Set<TEntity>().Add(entity);
             Db.SaveChanges();
-            return entity;
         }
 
         public void Dispose()
         {
-            Db = null;  
+            throw new NotImplementedException();
         }
 
         public IEnumerable<TEntity> GetAll()
@@ -32,7 +31,7 @@ namespace ProjetoModeloDDD.Infra.Data.Repositories
             return Db.Set<TEntity>().Find(Id);
         }
 
-        public void Modify(TEntity entity)
+        public void Update(TEntity entity)
         {
             Db.Entry(entity).State = System.Data.Entity.EntityState.Modified;
             Db.SaveChanges();

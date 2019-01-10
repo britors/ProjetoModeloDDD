@@ -1,9 +1,9 @@
 ﻿using ProjetoModeloDDD.Domain.Entities;
 using System.Collections.Generic;
 
-namespace ProjetoModeloDDD.Domain.Interfaces
+namespace ProjetoModeloDDD.Domain.Interfaces.Services
 {
-    public interface IProductRepository : IRepositoryBase<Product>
+    public interface IProductService: IServiceBase<Product>
     {
         IEnumerable<Product> GetByName(string name);
     }

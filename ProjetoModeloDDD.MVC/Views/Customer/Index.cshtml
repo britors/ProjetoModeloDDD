@@ -1,7 +1,31 @@
-﻿
+﻿@model  IEnumerable<ProjetoModeloDDD.MVC.ViewModels.CustomerViewModel>
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Cadastro de Clientes";
 }
 
-<h2>Index</h2>
+
+<h2>Cadastro de Clientes</h2>
+
+<table class="table table-responsive">
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Sobrenome</th>
+            <th>Email</th>
+            <th>Ativo</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var customer in Model)
+        {
+        <tr>
+            <td>@customer.FirstName</td>
+            <td>@customer.LastName</td>
+            <td>@customer.Email</td>
+            <td>@customer.Actived</td>
+        </tr>
+        }
+    </tbody>
+</table>
+
 
