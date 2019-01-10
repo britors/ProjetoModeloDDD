@@ -11,7 +11,7 @@ namespace ProjetoModeloDDD.Domain.Entities
         public string Email { get; set; }
         public DateTime InsertAt { get; set; }
         public bool Actived { get; set; }
-        public virtual ICollection<Product> Products { get; set; }
+        public virtual IEnumerable<Product> Products { get; set; }
         public bool IsOldCustomer(Customer customer)
         {
             return customer.Actived && DateTime.Now.Year - customer.InsertAt.Year >= 5;

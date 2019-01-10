@@ -1,11 +1,11 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using ProjetoModeloDDD.Domain.Entities;
+﻿using ProjetoModeloDDD.Domain.Entities;
 using ProjetoModeloDDD.Domain.Interfaces;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace ProjetoModeloDDD.Infra.Data.Repositories
 {
-    public class ProdutoRepository : RepositoryBase<Product>, IProductRepository
+    public class ProdutoRepository : RepositoryBase<Product>
     {
         public IEnumerable<Product> GetByName(string name)
         {
