@@ -1,0 +1,58 @@
+﻿@model ProjetoModeloDDD.MVC.ViewModels.CustomerViewModel
+
+@{
+    ViewBag.Title = "Excluir Cliente";
+}
+
+<h2>Excluir Cliente</h2>
+
+<h3>Confirma a Exclusão do Item</h3>
+<div>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+       
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.FirstName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.LastName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.LastName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Email)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Email)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Actived)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Actived)
+            </dd>
+
+        </dl>
+
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Excluir" class="btn btn-default" /> |
+            @Html.ActionLink("Voltar", "Index")
+        </div>
+    }
+</div>

@@ -1,31 +1,51 @@
-﻿@model  IEnumerable<ProjetoModeloDDD.MVC.ViewModels.CustomerViewModel>
+﻿@model IEnumerable<ProjetoModeloDDD.MVC.ViewModels.CustomerViewModel>
+
 @{
     ViewBag.Title = "Cadastro de Clientes";
 }
 
-
 <h2>Cadastro de Clientes</h2>
 
-<table class="table table-responsive">
-    <thead>
-        <tr>
-            <th>Nome</th>
-            <th>Sobrenome</th>
-            <th>Email</th>
-            <th>Ativo</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var customer in Model)
-        {
-        <tr>
-            <td>@customer.FirstName</td>
-            <td>@customer.LastName</td>
-            <td>@customer.Email</td>
-            <td>@customer.Actived</td>
-        </tr>
-        }
-    </tbody>
+<p>
+    @Html.ActionLink("Novo", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Actived)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Actived)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.CustomerId }) |
+            @Html.ActionLink("Visualizar", "Details", new { id=item.CustomerId }) |
+            @Html.ActionLink("Excluir", "Delete", new { id=item.CustomerId })
+        </td>
+    </tr>
+}
+
 </table>
-
-
