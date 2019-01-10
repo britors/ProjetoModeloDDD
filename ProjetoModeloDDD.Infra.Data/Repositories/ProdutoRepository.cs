@@ -9,7 +9,7 @@ namespace ProjetoModeloDDD.Infra.Data.Repositories
     {
         public IEnumerable<Product> GetByName(string name)
         {
-            return Db.Product.AsNoTracking().Where(p => p.Name.Equals(name));
+            return Db.Products.AsNoTracking().Where(p => p.Name.Equals(name));
         }
     }
 }

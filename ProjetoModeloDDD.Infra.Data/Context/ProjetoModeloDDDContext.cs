@@ -1,6 +1,8 @@
 ﻿using ProjetoModeloDDD.Domain.Entities;
+using ProjetoModeloDDD.Infra.Data.EntityConfig;
 using System;
 using System.Data.Entity;
+using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Linq;
 
 namespace ProjetoModeloDDD.Infra.Data.Context
@@ -9,10 +11,17 @@ namespace ProjetoModeloDDD.Infra.Data.Context
     {
         public ProjetoModeloDDDContext() : base("ProjetoModeloDDD") { }
 
-        public DbSet<Customer> Customer { get; set; }
-        public DbSet<Product>   Product { get; set; }
+        public DbSet<Customer> Customers { get; set; }
+        public DbSet<Product> Products { get; set; }
 
-        protected override void OnModelCreating(DbModelBuilder modelBuilder) { }
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+            modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
+            modelBuilder.Conventions.Remove<ManyToManyCascadeDeleteConvention>();
+            modelBuilder.Configurations.Add(new CustomerEntityConfig());
+            modelBuilder.Configurations.Add(new ProductEntityConfig());
+        }
 
         public override int SaveChanges()
         {
